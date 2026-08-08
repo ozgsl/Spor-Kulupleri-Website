@@ -1,69 +1,83 @@
-import Image from "next/image";
+import { Card } from "@/components/ui/Card"
+import { Button } from "@/components/ui/Button"
+import { SportIllustration } from "@/components/ui/SportIllustration"
+import { Lock, UserPlus, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 lg:p-24 relative overflow-hidden">
+      
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-glow-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] pointer-events-none" style={{ animationDelay: '1s' }} />
+
+      {/* Floating Sport Illustrations (Gamification Elements) */}
+      <div className="absolute top-[15%] left-[10%] opacity-80 hidden lg:block">
+        <SportIllustration sportType="basketball" />
+      </div>
+      <div className="absolute bottom-[20%] left-[15%] opacity-80 hidden lg:block">
+        <SportIllustration sportType="tennis" />
+      </div>
+      <div className="absolute top-[25%] right-[10%] opacity-80 hidden lg:block">
+        <SportIllustration sportType="swimming" />
+      </div>
+      <div className="absolute bottom-[15%] right-[15%] opacity-80 hidden lg:block">
+        <SportIllustration sportType="volleyball" />
+      </div>
+
+      {/* Header Section */}
+      <div className="text-center z-10 mb-16 max-w-3xl relative">
+        <div className="inline-block mb-6 px-5 py-2 rounded-full border border-emerald-300 bg-emerald-100 text-sm font-bold text-emerald-800 shadow-sm animate-glow-pulse">
+          ✨ Yeni Dönem Kayıtları Başladı
+        </div>
+        <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 dark:text-white">
+          Spor Kursları <br />
+          <span className="bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent">Kayıt Sistemi</span>
+        </h1>
+        <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto">
+          Eğitmenler, salonlar ve kursiyer başvuruları için tek noktadan dijital yönetim.
+        </p>
+      </div>
+
+      {/* Actions Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl z-10">
+        
+        {/* Kursiyer Kayıt Kartı */}
+        <Card hoverEffect className="group flex flex-col items-center text-center">
+          <div className="w-20 h-20 rounded-full bg-primary/20 border-4 border-white dark:border-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:animate-glow-pulse transition-transform duration-500 shadow-sm">
+            <UserPlus className="w-10 h-10 text-primary-hover" />
+          </div>
+          <h2 className="text-2xl font-bold mb-3 text-slate-800 dark:text-white">Kursiyer Başvurusu</h2>
+          <p className="text-slate-500 dark:text-slate-400 mb-8 flex-grow font-medium">
+            Uygun kursları görüntüleyin, eğitmenleri inceleyin ve kayıt başvurunuzu tamamlayın.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          <Link href="/apply" className="w-full">
+            <Button variant="primary" size="lg" fullWidth className="group/btn">
+              Başvuru Yap 
+              <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </Card>
+
+        {/* Admin Paneli Kartı */}
+        <Card hoverEffect className="group flex flex-col items-center text-center">
+          <div className="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-700 border-4 border-white dark:border-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+            <Lock className="w-10 h-10 text-slate-400 dark:text-slate-300 group-hover:text-slate-600 dark:group-hover:text-white transition-colors" />
+          </div>
+          <h2 className="text-2xl font-bold mb-3 text-slate-800 dark:text-white">Yönetici Paneli</h2>
+          <p className="text-slate-500 dark:text-slate-400 mb-8 flex-grow font-medium">
+            Kayıt başvurularını onaylayın, kursları planlayın ve eğitmen - tesis atamalarını yapın.
+          </p>
+          <Link href="/admin" className="w-full">
+            <Button variant="outline" size="lg" fullWidth className="group/btn">
+              Giriş Yap
+              <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </Card>
+
+      </div>
+    </main>
   );
 }
