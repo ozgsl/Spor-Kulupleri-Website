@@ -28,34 +28,26 @@ export default async function ApplyPage() {
   }))
 
   return (
-    <main className="min-h-screen flex flex-col p-6 lg:p-12 relative overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-glow-pulse" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
-
+    <main className="min-h-screen flex flex-col p-6 lg:p-12 relative overflow-hidden bg-background">
+      
       {/* Navigation */}
       <nav className="relative z-10 mb-12">
         <Link href="/">
-          <Button variant="ghost" size="sm" className="group">
-            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+          <Button variant="ghost" size="sm" className="rounded-sm">
+            <ArrowLeft className="w-4 h-4 mr-2" />
             Ana Sayfaya Dön
           </Button>
         </Link>
       </nav>
 
       {/* Header */}
-      <div className="relative z-10 mb-12 max-w-4xl">
-        <div className="flex items-center gap-6 mb-6">
-          <SportIllustration sportType="general" className="hidden sm:flex" />
-          <div>
-            <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
-              Kursiyer <span className="bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent">Başvuru Formu</span>
-            </h1>
-            <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">
-              Sana en uygun sporu seç, yeteneklerini keşfet ve kayıt adımını tamamla. Başarı hikayen burada başlıyor!
-            </p>
-          </div>
-        </div>
+      <div className="relative z-10 mb-12 max-w-4xl border-b border-slate-300 dark:border-slate-700/50 pb-6">
+        <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-foreground">
+          Kursiyer Başvuru Formu
+        </h1>
+        <p className="text-lg text-foreground/80 font-medium">
+          Aşağıdaki formu eksiksiz doldurarak kayıt talebinizi sistemimize iletebilirsiniz.
+        </p>
       </div>
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -69,23 +61,17 @@ export default async function ApplyPage() {
 
         {/* Sağ Taraf: Dinamik Özet ve Gamification */}
         <div className="space-y-6">
-          <Card className="bg-primary-100 dark:bg-slate-800 border-primary/30 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-70">
-              <SportIllustration sportType="basketball" />
-            </div>
-            <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white relative z-10">Neden Biz?</h3>
-            <ul className="space-y-5 text-slate-700 dark:text-slate-300 relative z-10 font-medium">
-              <li className="flex items-start gap-3">
-                <span className="text-2xl">🏆</span>
-                <span>Uzman eğitmen kadrosu ve profesyonel gelişim takibi.</span>
+          <Card className="bg-[#f0e8db] dark:bg-[#1a120d] border-slate-300 dark:border-[#38281d]">
+            <h3 className="text-xl font-bold mb-4 text-foreground border-b border-slate-300 dark:border-slate-700/50 pb-2">Kayıt Bilgilendirmesi</h3>
+            <ul className="space-y-4 text-foreground/80 font-medium text-sm list-disc pl-4">
+              <li>
+                Lütfen T.C. Kimlik numaranızı 11 hane olacak şekilde doğru girdiğinizden emin olun.
               </li>
-              <li className="flex items-start gap-3">
-                <span className="text-2xl">🏟️</span>
-                <span>Uluslararası standartlarda tam donanımlı spor tesisleri.</span>
+              <li>
+                Sistemimiz mükerrer kayıtları engellemektedir. Bir kursa yalnızca bir kez başvuru yapılabilir.
               </li>
-              <li className="flex items-start gap-3">
-                <span className="text-2xl">⚡</span>
-                <span>Dijital rozetler ve oyunlaştırılmış eğitim sistemi.</span>
+              <li>
+                Başvuru sonrası yöneticilerimiz durumunuzu değerlendirecek ve e-posta ile tarafınıza dönüş yapılacaktır.
               </li>
             </ul>
           </Card>

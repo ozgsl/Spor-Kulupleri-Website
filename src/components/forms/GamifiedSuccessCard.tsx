@@ -8,12 +8,12 @@ interface GamifiedSuccessCardProps {
 
 export function GamifiedSuccessCard({ message }: GamifiedSuccessCardProps) {
   return (
-    <div className="flex flex-col items-center justify-center p-8 text-center bg-emerald-50 dark:bg-emerald-950/20 rounded-3xl border border-emerald-200 dark:border-emerald-800 shadow-sm animate-in fade-in zoom-in duration-500">
-      <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mb-6">
-        <CheckCircle className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
+    <div className="flex flex-col items-center justify-center p-8 text-center bg-emerald-50/50 dark:bg-emerald-950/20 rounded-sm border-2 border-emerald-600 dark:border-emerald-700">
+      <div className="mb-4">
+        <CheckCircle className="w-12 h-12 text-emerald-700 dark:text-emerald-500" />
       </div>
-      <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-2">Başvurunuz Alındı!</h3>
-      <p className="text-emerald-600 dark:text-emerald-500 font-medium mb-6">
+      <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-400 mb-2">Başvurunuz Alındı</h3>
+      <p className="text-emerald-800 dark:text-emerald-500 font-medium mb-6">
         {message}
       </p>
       <Button variant="outline" onClick={() => window.location.reload()}>Yeni Başvuru Yap</Button>

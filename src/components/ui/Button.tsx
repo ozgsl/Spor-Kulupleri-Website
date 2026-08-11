@@ -15,14 +15,14 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  // Gamified bounce effect: active:scale-95 and active:translate-y-1 for the 3D press feel
-  const baseStyles = 'inline-flex items-center justify-center font-bold rounded-2xl transition-all duration-200 active:scale-95 active:translate-y-1'
+  // Vintage flat web style
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-sm transition-colors duration-200'
   
   const variants = {
-    primary: 'bg-primary text-slate-800 hover:bg-primary-hover shadow-[0_4px_0_0_#22C55E] hover:shadow-[0_2px_0_0_#22C55E] hover:translate-y-[2px]',
-    secondary: 'bg-secondary text-slate-800 hover:bg-secondary-hover shadow-[0_4px_0_0_#F59E0B] hover:shadow-[0_2px_0_0_#F59E0B] hover:translate-y-[2px]',
-    outline: 'border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-primary dark:hover:border-primary',
-    ghost: 'bg-transparent text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+    primary: 'bg-foreground text-background hover:opacity-90',
+    secondary: 'bg-secondary text-foreground hover:opacity-90',
+    outline: 'border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background',
+    ghost: 'bg-transparent text-foreground hover:bg-foreground/10'
   }
 
   const sizes = {

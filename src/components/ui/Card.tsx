@@ -6,8 +6,8 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function Card({ hoverEffect = false, className = '', children, ...props }: CardProps) {
-  const baseStyles = 'p-6 sm:p-8 flex flex-col relative overflow-hidden bg-white dark:bg-slate-800 rounded-3xl border border-slate-200/80 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none'
-  const hoverStyles = hoverEffect ? 'transition-all duration-300 hover:-translate-y-1 hover:shadow-xl' : ''
+  const baseStyles = 'p-6 sm:p-8 flex flex-col relative overflow-hidden bg-white dark:bg-[#1f1610] rounded-sm border border-slate-300 dark:border-[#38281d]'
+  const hoverStyles = hoverEffect ? 'transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[4px_4px_0_0_rgba(0,0,0,0.1)]' : ''
   
   return (
     <div className={`${baseStyles} ${hoverStyles} ${className}`} {...props}>

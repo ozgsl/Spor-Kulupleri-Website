@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning className={`${outfit.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-outfit)] bg-mesh">
+      <body className="min-h-full flex flex-col font-[family-name:var(--font-outfit)]">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <ThemeToggle />
           {children}

@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
 import { Activity, Dumbbell, Trophy, Target } from 'lucide-react'
 
 export type SportType = 'basketball' | 'swimming' | 'football' | 'tennis' | 'volleyball' | 'general'
@@ -30,33 +29,23 @@ export function SportIllustration({ sportType, className = '' }: SportIllustrati
   }
 
   return (
-    <motion.div 
-      className={`relative flex items-center justify-center w-24 h-24 ${className}`}
-      whileHover={{ scale: 1.08, rotate: 2 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
+    <div className={`relative flex items-center justify-center w-24 h-24 ${className}`}>
       {!imgError ? (
-        <div className="w-full h-full rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center overflow-hidden p-2 shadow-sm border border-emerald-200 dark:border-emerald-800">
+        <div className="w-full h-full flex items-center justify-center overflow-hidden p-2">
           <img 
             src={imagePath} 
             alt={`${sportType} illustration`} 
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain filter grayscale contrast-125 sepia-[0.3]"
             onError={() => setImgError(true)}
           />
         </div>
       ) : (
-        // Minimal Gamified Fallback
-        <div className="w-full h-full rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shadow-sm relative overflow-hidden group border border-emerald-200 dark:border-emerald-800">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/50 to-amber-200/50" />
-          <motion.div 
-            animate={{ y: [0, -5, 0] }} 
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="relative z-10"
-          >
-            {getFallbackIcon()}
-          </motion.div>
+        // Minimal Retro Fallback
+        <div className="w-full h-full flex items-center justify-center border-2 border-foreground bg-background rounded-sm">
+          {getFallbackIcon()}
         </div>
       )}
-    </motion.div>
+    </div>
+  )
   )
 }
