@@ -19,7 +19,7 @@ export function ThemeToggle() {
     <Button
       variant="outline"
       size="sm"
-      className="p-2 border-2 border-foreground/50 bg-background text-foreground hover:bg-foreground hover:text-background absolute top-4 right-4 z-50 rounded-sm transition-colors"
+      className="p-3 border-2 border-foreground/50 bg-background text-foreground hover:bg-foreground hover:text-background fixed bottom-6 right-6 z-50 rounded-full shadow-[4px_4px_0_0_rgba(217,119,6,0.3)] dark:shadow-[4px_4px_0_0_rgba(253,230,138,0.2)] transition-all"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (

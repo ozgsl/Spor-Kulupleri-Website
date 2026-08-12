@@ -34,7 +34,7 @@ export default async function AdminDashboardPage() {
     <main className="min-h-screen flex flex-col p-6 lg:p-12 bg-background relative overflow-hidden">
       
       {/* Navigation */}
-      <nav className="relative z-10 mb-8 flex justify-between items-center">
+      <nav className="relative z-10 mb-8 flex justify-between items-center mr-14 sm:mr-0">
         <Link 
           href="/" 
           className="inline-flex items-center justify-center font-semibold rounded-sm transition-colors duration-200 bg-transparent text-foreground hover:bg-foreground/10 px-4 py-2 text-sm"
