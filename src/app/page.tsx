@@ -8,11 +8,19 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col p-6 lg:p-12 relative overflow-hidden bg-background">
       
-      {/* Header Section */}
-      <div className="text-left z-10 mb-16 max-w-4xl relative mt-12 lg:mt-24">
-        <div className="inline-block mb-6 px-4 py-2 border border-secondary bg-secondary-100 text-sm font-semibold text-secondary-hover shadow-[2px_2px_0_0_rgba(217,119,6,0.2)] dark:bg-[#1f1610] dark:border-[#38281d] dark:text-[#FDE68A]">
-          Demo sürümü — Akademisyen isimleri gerçek değildir, örnek veriyle üretilmiştir.
+      {/* Top Navbar / Logo */}
+      <div className="w-full flex justify-start items-center mb-8 lg:mb-12">
+        <div className="font-bold text-2xl tracking-tighter text-foreground flex items-center gap-2">
+          {/* Geçiçi Logo İkonu */}
+          <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center rounded-sm font-black text-lg">
+            S
+          </div>
+          <span>logo + site ismi</span>
         </div>
+      </div>
+
+      {/* Header Section */}
+      <div className="text-left z-10 mb-16 max-w-4xl relative">
         <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 text-foreground leading-tight">
           Doğru kursu seç, <br />
           gerçek eğitim <br />

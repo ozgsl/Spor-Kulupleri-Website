@@ -1,12 +1,22 @@
 import { getApplications, getAdminDashboardData } from "@/app/actions/admin"
 import { AdminTabs } from "@/components/admin/AdminTabs"
+import { LogoutButton } from "@/components/admin/LogoutButton"
 import { Button } from "@/components/ui/Button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 export const dynamic = "force-dynamic"
 
 export default async function AdminDashboardPage() {
+  const cookieStore = cookies()
+  const hasSession = cookieStore.has("admin_session")
+
+  if (!hasSession) {
+    redirect("/admin/login")
+  }
+
   const [appRes, dashRes] = await Promise.all([
     getApplications(),
     getAdminDashboardData()
@@ -24,7 +34,7 @@ export default async function AdminDashboardPage() {
     <main className="min-h-screen flex flex-col p-6 lg:p-12 bg-background relative overflow-hidden">
       
       {/* Navigation */}
-      <nav className="relative z-10 mb-8">
+      <nav className="relative z-10 mb-8 flex justify-between items-center">
         <Link 
           href="/" 
           className="inline-flex items-center justify-center font-semibold rounded-sm transition-colors duration-200 bg-transparent text-foreground hover:bg-foreground/10 px-4 py-2 text-sm"
@@ -32,6 +42,8 @@ export default async function AdminDashboardPage() {
           <ArrowLeft className="w-4 h-4 mr-2" />
           Ana Sayfaya Dön
         </Link>
+
+        <LogoutButton />
       </nav>
 
       {/* Header */}
