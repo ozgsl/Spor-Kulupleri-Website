@@ -1,5 +1,5 @@
-import { getApplications } from "@/app/actions/admin"
-import { ApplicationList } from "@/components/admin/ApplicationList"
+import { getApplications, getAdminDashboardData } from "@/app/actions/admin"
+import { AdminTabs } from "@/components/admin/AdminTabs"
 import { Button } from "@/components/ui/Button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
@@ -7,8 +7,13 @@ import Link from "next/link"
 export const dynamic = "force-dynamic"
 
 export default async function AdminDashboardPage() {
-  const response = await getApplications()
-  const applications = response.success ? response.data || [] : []
+  const [appRes, dashRes] = await Promise.all([
+    getApplications(),
+    getAdminDashboardData()
+  ])
+  
+  const applications = appRes.success ? appRes.data || [] : []
+  const dashboardData = dashRes.success ? dashRes.data || { trainers: [], facilities: [], courses: [] } : { trainers: [], facilities: [], courses: [] }
 
   // Basit İstatistikler
   const total = applications.length
@@ -61,7 +66,7 @@ export default async function AdminDashboardPage() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto">
-        <ApplicationList initialApplications={applications} />
+        <AdminTabs applications={applications} dashboardData={dashboardData} />
       </div>
     </main>
   )

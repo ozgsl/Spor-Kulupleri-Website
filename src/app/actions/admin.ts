@@ -80,3 +80,54 @@ export async function updateApplicationStatus(applicationId: string, newStatus: 
     return { success: false, error: error.message || "Bilinmeyen bir hata oluştu." }
   }
 }
+
+export async function getAdminDashboardData() {
+  try {
+    const trainers = await prisma.trainer.findMany({ orderBy: { firstName: 'asc' } })
+    const facilities = await prisma.facility.findMany({ orderBy: { name: 'asc' } })
+    const courses = await prisma.course.findMany({ 
+      include: { facility: true, trainer: true },
+      orderBy: { createdAt: 'desc' } 
+    })
+    
+    return { success: true, data: { trainers, facilities, courses } }
+  } catch (error) {
+    console.error("Dashboard verileri alınırken hata:", error)
+    return { success: false, error: "Veri okuma hatası." }
+  }
+}
+
+export async function createTrainer(data: any) {
+  try {
+    const trainer = await prisma.trainer.create({ data })
+    revalidatePath("/admin")
+    return { success: true, data: trainer }
+  } catch (error: any) {
+    console.error("Eğitmen eklenirken hata:", error)
+    if (error.code === 'P2002') return { success: false, error: "Bu e-posta adresi zaten kullanılıyor." }
+    return { success: false, error: "Eğitmen eklenemedi." }
+  }
+}
+
+export async function createFacility(data: { name: string; type: string; capacity: number; location?: string }) {
+  try {
+    const facility = await prisma.facility.create({ data })
+    revalidatePath("/admin")
+    return { success: true, data: facility }
+  } catch (error) {
+    console.error("Tesis eklenirken hata:", error)
+    return { success: false, error: "Tesis eklenemedi." }
+  }
+}
+
+export async function createCourse(data: { title: string; sportType: string; facilityId: string; trainerId: string; startDate: Date; endDate: Date; quota: number }) {
+  try {
+    const course = await prisma.course.create({ data })
+    revalidatePath("/admin")
+    return { success: true, data: course }
+  } catch (error) {
+    console.error("Kurs eklenirken hata:", error)
+    return { success: false, error: "Kurs eklenemedi." }
+  }
+}
+
