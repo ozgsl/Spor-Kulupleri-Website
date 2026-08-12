@@ -5,6 +5,7 @@ import { ApplicationList } from "./ApplicationList"
 import { TrainerForm } from "./forms/TrainerForm"
 import { FacilityForm } from "./forms/FacilityForm"
 import { CourseForm } from "./forms/CourseForm"
+import { ReportsTab } from "./ReportsTab"
 
 type AdminTabsProps = {
   applications: any[]
@@ -16,7 +17,7 @@ type AdminTabsProps = {
 }
 
 export function AdminTabs({ applications, dashboardData }: AdminTabsProps) {
-  const [activeTab, setActiveTab] = useState<"APPLICATIONS" | "COURSES" | "TRAINERS" | "FACILITIES">("APPLICATIONS")
+  const [activeTab, setActiveTab] = useState<"APPLICATIONS" | "COURSES" | "TRAINERS" | "FACILITIES" | "REPORTS">("APPLICATIONS")
 
   return (
     <div>
@@ -26,7 +27,8 @@ export function AdminTabs({ applications, dashboardData }: AdminTabsProps) {
           { id: "APPLICATIONS", label: "Başvurular" },
           { id: "COURSES", label: "Kurs Yönetimi" },
           { id: "TRAINERS", label: "Eğitmen Yönetimi" },
-          { id: "FACILITIES", label: "Tesis Yönetimi" }
+          { id: "FACILITIES", label: "Tesis Yönetimi" },
+          { id: "REPORTS", label: "Raporlar ve Sorgular" }
         ].map(tab => (
           <button
             key={tab.id}
@@ -91,6 +93,12 @@ export function AdminTabs({ applications, dashboardData }: AdminTabsProps) {
               </ul>
             </div>
             <FacilityForm />
+          </div>
+        )}
+
+        {activeTab === "REPORTS" && (
+          <div className="animate-in fade-in duration-300">
+            <ReportsTab facilities={dashboardData.facilities} />
           </div>
         )}
       </div>
