@@ -100,11 +100,25 @@ export function CourseForm({ trainers, facilities }: CourseFormProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-bold text-foreground mb-1">Başlangıç</label>
-            <input required name="startDate" type="date" className="w-full p-2 border-2 border-slate-300 dark:border-slate-700 bg-transparent text-foreground rounded-sm focus:border-foreground outline-none transition-colors" />
+            <input 
+              required 
+              name="startDate" 
+              type="date" 
+              min={new Date().toISOString().split("T")[0]}
+              max={new Date(new Date().setFullYear(new Date().getFullYear() + 5)).toISOString().split("T")[0]}
+              className="w-full p-2 border-2 border-slate-300 dark:border-slate-700 bg-transparent text-foreground rounded-sm focus:border-foreground outline-none transition-colors" 
+            />
           </div>
           <div>
             <label className="block text-sm font-bold text-foreground mb-1">Bitiş</label>
-            <input required name="endDate" type="date" className="w-full p-2 border-2 border-slate-300 dark:border-slate-700 bg-transparent text-foreground rounded-sm focus:border-foreground outline-none transition-colors" />
+            <input 
+              required 
+              name="endDate" 
+              type="date" 
+              min={new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]}
+              max={new Date(new Date().setFullYear(new Date().getFullYear() + 5)).toISOString().split("T")[0]}
+              className="w-full p-2 border-2 border-slate-300 dark:border-slate-700 bg-transparent text-foreground rounded-sm focus:border-foreground outline-none transition-colors" 
+            />
           </div>
           <div>
             <label className="block text-sm font-bold text-foreground mb-1">Kontenjan (Kişi)</label>
